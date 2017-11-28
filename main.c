@@ -13,8 +13,12 @@
 /* Includes ------------------------------------------------------------------*/
 
 #include "vendor.h"
-//#include "stm32l0xx_hal.h"
-#include "stm32l4xx_hal.h"
+
+#ifdef STM32L052xx
+  #include "stm32l0xx_hal.h"
+#else
+  #include "stm32l4xx_hal.h"
+#endif
 
 static blocks_errorcode_t Block_Function_LedOn (uint8_t brightness)
 {
