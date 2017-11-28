@@ -1,17 +1,3 @@
-/*
- * Blocks sample vendor
- *
- * Copyright (C) 2017 BayLibre, SAS - All Rights Reserved
- *
- * Unauthorized copying of this file, via any medium is strictly prohibited
- * Proprietary and confidential
- *
- * Author(s) :
- * LE Phong <ple@baylibre.com>
- */
-
-/* Includes ------------------------------------------------------------------*/
-
 #include "vendor.h"
 
 #ifdef STM32L052xx
@@ -45,12 +31,10 @@ void blocks_initializeModule (void)
 	GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;
 	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-	/* Registering our standard functions */
 	blocks_registerStdFunc (FUNC_LED_ON, (blocks_standard_function)Block_Function_LedOn);
 	blocks_registerStdFunc (FUNC_LED_OFF, (blocks_standard_function)Block_Function_LedOff);
 }
 
 void blocks_main (void)
 {
-	//while (1) {}
 }
