@@ -129,12 +129,12 @@ typedef enum _blocks_errorcode_t
  */
 #define BLOCKS_MAX_EXECUTION_TIME			20
 
-typedef struct _ModuleInfo
+typedef struct _vendor_module_info_t
 {
 	uint16_t label [VENDOR_LABEL_MAX_LEN];
 	uint16_t vendorID [VENDOR_ID_MAX_LEN];
 	uint8_t modelID [VENDOR_MODEL_ID_MAX_LEN];
-} ModuleInfo;
+} vendor_module_info_t;
 
 #define BLOCKS_MODULE_INFO { \
 	BLOCKS_MODULE_LABEL, \
@@ -225,26 +225,26 @@ void blocks_updateBackgroundTask(size_t ticks_elapsed);
 // TODO for power management
 //void module_vendor_idle ();
 
-	/**
-	 * Vendor handler.\n
-	 */
-	typedef struct _vendor_handler_t
-	{
-	        uint16_t hashcode;                             /**< standard function hashcode */
-	        blocks_standard_function handler;              /**< standard function handler */
-	} vendor_handler_t;
-	
-	/**
-	 * Array of vendor handler.\n
-	 */
-	typedef struct _vendor_array_handler_t
-	{
-	        uint16_t nbfuncs;                               /**< number of standard functions */
-	        vendor_handler_t funcs [];                        /**< array of vendor handlers */
-	} vendor_array_handler_t;
-	
-	extern const ModuleInfo blocks_module_info __attribute__((section (".vendor_info")));
-	extern vendor_array_handler_t array_register_functions;
+/**
+ * Vendor handler.\n
+ */
+typedef struct _vendor_handler_t
+{
+        uint16_t hashcode;                             /**< standard function hashcode */
+        blocks_standard_function handler;              /**< standard function handler */
+} vendor_handler_t;
+
+/**
+ * Array of vendor handler.\n
+ */
+typedef struct _vendor_array_handler_t
+{
+        uint16_t count;                                /**< number of standard functions */
+        vendor_handler_t funcs [];                     /**< array of vendor handlers */
+} vendor_array_handler_t;
+
+extern const vendor_module_info_t blocks_module_info __attribute__((section (".vendor_info")));
+extern const vendor_array_handler_t blocks_module_functions;
 
 #ifdef  __cplusplus
 }
