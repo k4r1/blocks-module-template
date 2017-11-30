@@ -129,12 +129,12 @@ typedef enum _blocks_errorcode_t
  */
 #define BLOCKS_MAX_EXECUTION_TIME			20
 
-struct ModuleInfo
+typedef struct _ModuleInfo
 {
 	uint16_t label [VENDOR_LABEL_MAX_LEN];
 	uint16_t vendorID [VENDOR_ID_MAX_LEN];
 	uint8_t modelID [VENDOR_MODEL_ID_MAX_LEN];
-};
+} ModuleInfo;
 
 #define BLOCKS_MODULE_INFO { \
 	BLOCKS_MODULE_LABEL, \
@@ -180,8 +180,8 @@ typedef blocks_errorcode_t (*BlocksStdFunction) (int dummy, ...);
 typedef union blocks_standard_function
 {
 	BlocksStdFunction			func;
-	LedOn						led_on;
-	LedOff						led_off;
+	LedOn					led_on;
+	LedOff					led_off;
 	BatteryGetStatus			battery_get_status;
 	BatteryGetLevel				battery_get_level;
 	BatteryGetCapacity			battery_get_capacity;
@@ -189,7 +189,7 @@ typedef union blocks_standard_function
 	PpgGetHeartRate				ppg_get_heart_rate;
 	PpgSetEnabled				ppg_set_enabled;
 	GetBaroPressure				get_baro_pressure;
-	GetHumidity					get_humidity;
+	GetHumidity				get_humidity;
 	GetTemperature				get_temperature;
 	GpsSetEnabled				gps_set_enabled;
 	GpsGetLocation				gps_get_location;
@@ -218,20 +218,33 @@ void blocks_main (void);
  */
 void blocks_notify (uint8_t notification);
 
-/**
- * Register a standard function.\n
- * This function is implemented in module platform.\n
- * @param [in] functionId id value in blocks_standard_function_ids_t  \n
- * @param [in] cb callback associated to this function id  \n
- */
-void blocks_registerStdFunc (uint16_t functionId, blocks_standard_function cb);
-
 void blocks_vendorNotify (uint16_t notification);
 
 void blocks_updateBackgroundTask(size_t ticks_elapsed);
 
 // TODO for power management
 //void module_vendor_idle ();
+
+	/**
+	 * Vendor handler.\n
+	 */
+	typedef struct _vendor_handler_t
+	{
+	        uint16_t hashcode;                             /**< standard function hashcode */
+	        blocks_standard_function handler;              /**< standard function handler */
+	} vendor_handler_t;
+	
+	/**
+	 * Array of vendor handler.\n
+	 */
+	typedef struct _vendor_array_handler_t
+	{
+	        uint16_t nbfuncs;                               /**< number of standard functions */
+	        vendor_handler_t funcs [];                        /**< array of vendor handlers */
+	} vendor_array_handler_t;
+	
+	extern const ModuleInfo blocks_module_info __attribute__((section (".vendor_info")));
+	extern vendor_array_handler_t array_register_functions;
 
 #ifdef  __cplusplus
 }
