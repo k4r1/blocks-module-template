@@ -223,7 +223,7 @@ void blocks_vendorNotify (uint16_t notification);
 void blocks_updateBackgroundTask(size_t ticks_elapsed);
 
 // TODO for power management
-//void module_vendor_idle ();
+void module_vendor_idle ();
 
 /**
  * Vendor handler.\n
