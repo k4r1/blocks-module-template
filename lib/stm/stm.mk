@@ -12,7 +12,7 @@ LD_FLAGS += -T "$(LD_LINKER_FILE)"
 
 STM_INCLUDE_PATHS += \
     $(PWD) \
-    $(PWD)/hal/CMSIS/Include
+    $(PWD)hal/CMSIS/Include
 
 INCLUDE_PATHS += $(STM_INCLUDE_PATHS)
 
