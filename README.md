@@ -1,5 +1,5 @@
 # BLOCKS Module Platform - Template
-This repo contains everything you need to start developing for a BLOCKS smartwatch module using the Module Platform and API. [Learn more about BLOCKS here](https:/wwww.chooseblocks.com).
+This repo contains everything you need to start developing for a BLOCKS smartwatch module using the Module Platform and API. [Learn more about BLOCKS here](https://www.chooseblocks.com).
 
 ## Prerequisites
 In order to compile firmware for a module, you will need to have the GNU ARM Embedded toolchain `arm-none-eabi-*` installed on your system. 
