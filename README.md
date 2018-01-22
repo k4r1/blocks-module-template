@@ -42,7 +42,7 @@ The Blocks module platform defines a set of *Standard Function* signatures that 
 Standard function handlers *must not execute for more than 20ms* since they are executed in the main event thread. Therefore, in the event that a standard function call needs to initiate a long running operation, it should simply set a flag to notify the main event loop to begin the processing, and then return immediately. 
 
 ### Response notifications
-The main run loop is able to call for the attention of the CoreHub using the `blocks_vendorNotify` function. (TODO)
+The module is able to call for the attention of the Core using the `blocks_notify` function. This accepts an argument to indicate the type of notification being raised. For example, if there is an error during initialisation, the module should run `blocks_notify(NOTIFY_MODULE_ERROR)` in order to notify the Core of this issue.
 
 ## Building
 The module platform can currently be built for STM32L052 (default) and STM32L476 targets. To build, run `make (TARGET=[STM32L0X2|STM32L4X6])`, or just `make` to use the default target.
