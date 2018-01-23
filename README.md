@@ -29,8 +29,8 @@ static blocks_errorcode_t led_on (uint8_t brightness) { ... }
 static blocks_errorcode_t led_off (void) { ... }
 
 const vendor_array_handler_t blocks_module_functions = { .count = 2, {
-	{FUNC_LED_ON,  (blocks_standard_function)led_on},
-	{FUNC_LED_OFF, (blocks_standard_function)led_off}
+	{STDFUNC_LED_ON,  (blocks_standard_function)led_on},
+	{STDFUNC_LED_OFF, (blocks_standard_function)led_off}
 }};
 ```
 
