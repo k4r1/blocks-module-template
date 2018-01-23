@@ -179,7 +179,7 @@ typedef blocks_errorcode_t (*Blocks_BlocksStdFunction) (int dummy, ...);
 
 typedef union _blocks_standard_function
 {
-    BlocksStdFunction         func;
+    Blocks_BlocksStdFunction  func;
     Blocks_LedOn              led_on;
     Blocks_LedOff             led_off;
     Blocks_BatteryGetStatus   battery_get_status;
