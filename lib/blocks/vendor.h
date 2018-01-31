@@ -164,7 +164,7 @@ typedef blocks_errorcode_t (*Blocks_BatteryGetStatus) (blocks_battery_status_t* 
 typedef blocks_errorcode_t (*Blocks_BatteryGetLevel) (uint8_t* level);
 typedef blocks_errorcode_t (*Blocks_BatteryGetCapacity) (uint16_t* capacity);
 typedef blocks_errorcode_t (*Blocks_BatterySetEnabled) (bool enabled);
-typedef blocks_errorcode_t (*Blocks_PpgGetHeartRate) (uint8_t* heartrate);
+typedef blocks_errorcode_t (*Blocks_PpgGetHeartRate) (float* heartrate);
 typedef blocks_errorcode_t (*Blocks_PpgGetHeartRateRaw) (blocks_buffer* data);
 typedef blocks_errorcode_t (*Blocks_PpgGetRate) (uint8_t* rate);
 typedef blocks_errorcode_t (*Blocks_PpgSetEnabled) (bool enabled);
